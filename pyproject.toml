@@ -16,8 +16,8 @@ maintainers = [{name="Iso"}, {name="Alan"}] # must be an object
 license = "AGPL-3.0-only"
 readme = {file = "README.rst", content-type = "text/x-rst"}
 
-homepage = "https://github.com/alanmehio/rf-surveillance-node"
-repository = "https://github.com/alanmehio/rf-surveillance-node"
+homepage = "https://github.com/alan-techdev/rf-surveillance-node"
+repository = "https://github.com/alan-techdev/rf-surveillance-node"
 documentation = "https://rf-surveillance-node.readthedocs.io/"
 
 keywords = [
@@ -48,11 +48,11 @@ classifiers = [
 
 
 # PyPi url links, that appear in 'Project Links' section
-urls."Bug Tracker" = "https://github.com/alanmehio/rf-surveillance-node/issues"
-urls."CI: Github Actions" = "https://github.com/alanmehio/rf-surveillance-node/actions"
+urls."Bug Tracker" = "https://github.com/alan-techdev/rf-surveillance-node/issues"
+urls."CI: Github Actions" = "https://github.com/alan-techdev/rf-surveillance-node/actions"
 urls.Documentation = "https://rf-surveillance-node.readthedocs.io/"
-urls."Source Code" = "https://github.com/alanmehio/rf-surveillance-node"
-urls.Changelog = "https://github.com/alanmehio/rf-surveillance-node/blob/master/CHANGELOG.rst"
+urls."Source Code" = "https://github.com/alan-techdev/rf-surveillance-node"
+urls.Changelog = "https://github.com/alan-techdev/rf-surveillance-node/blob/master/CHANGELOG.rst"
 
 
 
