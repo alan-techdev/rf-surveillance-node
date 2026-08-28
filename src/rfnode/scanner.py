@@ -3,7 +3,7 @@ import logging
 from threading import Thread
 
 import numpy as np
-from rtlsdr import RtlSdr # type: ignore
+from rtlsdr import RtlSdr  # type: ignore
 
 from rfnode.broker import DataBroker
 from rfnode.devicemanager import DeviceManager
@@ -57,7 +57,7 @@ class Scanner(Thread):
         print("\n")
         while True:
             counter += 1
-            print(f"SCANNING-->iteration:{counter} -->{self.name}") 
+            print(f"SCANNING-->iteration:{counter} -->{self.name}")
             print("\n\n")
             self.do_run()
 

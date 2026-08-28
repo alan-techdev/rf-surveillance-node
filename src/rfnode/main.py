@@ -1,8 +1,8 @@
 import argparse
 import platform
 
-from rtlsdr import RtlSdr # type:ignore
-from serial import Serial # type:ignore
+from rtlsdr import RtlSdr  # type:ignore
+from serial import Serial  # type:ignore
 
 from rfnode.broker import DataBroker
 from rfnode.common.log_manager import LogManager

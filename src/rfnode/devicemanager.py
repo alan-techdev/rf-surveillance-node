@@ -3,7 +3,7 @@ to find the ports of the attached devices
 """
 import subprocess
 
-from rtlsdr import RtlSdr # type: ignore
+from rtlsdr import RtlSdr  # type: ignore
 
 
 class DeviceManager:
