@@ -153,10 +153,10 @@ To run all tests using various versions of python in virtualenvs defined in tox.
 tox
 ```
 
-To run all tests using python 3.8:
+To run all tests using python 3.13.5(it needs to be installed):
 
 ```bash
-tox -e py38
+tox -e py313
 ```
 
 To only run test cases matching the string 'smoke_test', using python 3.8:

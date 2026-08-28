@@ -25,7 +25,7 @@ class Util:
 .
         """
         frequencies = np.arange(freq_start, freq_end, freq_step, np.int64) # type: ignore
-        return np.array_split(frequencies, device_amount)  # split of equal or near-equal size
+        return np.array_split(frequencies, device_amount) # type: ignore  # split of equal or near-equal size
 
 
 class NumpyComplexEncoder(json.JSONEncoder):
