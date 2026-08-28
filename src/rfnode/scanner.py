@@ -3,14 +3,14 @@ import logging
 from threading import Thread
 
 import numpy as np
-from rtlsdr import RtlSdr
+from rtlsdr import RtlSdr # type: ignore
 
 from rfnode.broker import DataBroker
 from rfnode.devicemanager import DeviceManager
 from rfnode.model.model import HighPowerFrequency, HighPowerSample
 
 
-def display_menu():
+def display_menu()-> None:
     print(
         """
     ##################################
@@ -40,7 +40,7 @@ class Scanner(Thread):
 
         self.logger = logging.getLogger("Scanner")
 
-    def run(self):
+    def run(self)-> None:
         """
         Initiating the scanning process of the specified frequency range using the RTL-SDR device.
         """
@@ -48,8 +48,8 @@ class Scanner(Thread):
 
         stop_freq = self.frequencies[len(self.frequencies) - 1]
         start_freq = self.frequencies[0]
-        print(f"start freq(MHz) {start_freq/1e6} -->{self.getName()}")
-        print(f"stop_freq(MHz) {stop_freq/1e6} -->{self.getName()}")
+        print(f"start freq(MHz) {start_freq/1e6} -->{self.name}")
+        print(f"stop_freq(MHz) {stop_freq/1e6} -->{self.name}")
         self.logger.info(
             f"{self.name:} Scanning from {self.frequencies[0]/1e6} MHz to {stop_freq/1e6} MHz..."
         )
@@ -57,7 +57,7 @@ class Scanner(Thread):
         print("\n")
         while True:
             counter += 1
-            print(f"SCANNING-->iteration:{counter} -->{self.getName()}")
+            print(f"SCANNING-->iteration:{counter} -->{self.name}") 
             print("\n\n")
             self.do_run()
 
@@ -77,7 +77,7 @@ class Scanner(Thread):
             power = 10 * np.log10(np.mean(spectrum))
             if power > self.power_threshold:  # configure the power to send the sample
                 self.logger.info(f"{self.name:} freq is {freq} power is {power}")
-                high_power_sample = HighPowerSample(power, freq / 1e6, samples)
+                high_power_sample = HighPowerSample(power, freq / 1e6, samples) # type: ignore
                 DataBroker.q.put(
                     high_power_sample
                 )  # sending the samples for config threshold power
@@ -93,7 +93,7 @@ class Scanner(Thread):
             f"{self.name}: High Power frequencies detected at (MHz): {high_power_freqs}"
         )
         self.logger.info(f"{self.name}: Sending the result to the queue")
-        high_power_freqs = HighPowerFrequency(threshold, high_power_freqs)
+        high_power_freqs = HighPowerFrequency(threshold, high_power_freqs) # type:ignore
         DataBroker.q.put(
             high_power_freqs
         )  # send frequencies with high power exceeding threshold
@@ -106,9 +106,9 @@ if __name__ == "__main__":
     params = {}
     level = logging.INFO
     params["format"] = "[%(asctime)s][%(levelname)7s][%(name)6s] %(message)s"
-    params["level"] = level
+    params["level"] = level # type:ignore
     params["datefmt"] = "%Y-%m-%d %H:%M:%S"
-    logging.basicConfig(**params)
+    logging.basicConfig(**params) # type:ignore
 
     data_broker = DataBroker()
     data_broker.start()
@@ -123,8 +123,7 @@ if __name__ == "__main__":
         sample_rate = 32 * 1e5  # 3.2 MHz
         power_threshold = 55.55
         scanner = Scanner(
-            frequencies=frequencies[i],
-            sample_rate=sample_rate,
+            frequencies=frequencies[i], # type:ignore
             sample_size=sample_size,
             power_threshold=power_threshold,
             sdr=sdr,

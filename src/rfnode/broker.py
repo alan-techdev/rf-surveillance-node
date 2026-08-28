@@ -12,9 +12,9 @@ from rfnode.sender.sender import Sender
 
 
 class DataBroker:
-    q = queue.Queue()
+    q: queue.Queue = queue.Queue()
 
-    def __init__(self):
+    def __init__(self)-> None:
         self.logger = logging.getLogger("Broker")
 
     def set_rf_sender(self, sender: Sender) -> None:
@@ -26,7 +26,7 @@ class DataBroker:
         """
         self.sender = sender
 
-    def worker(self):
+    def worker(self)-> None:
         """ loop once the queue is empty this loop block 
              or the thread get blocked await for incoming data to read again.
         """
@@ -47,6 +47,6 @@ class DataBroker:
                 obj_str = obj.to_json()
                 self.logger.info(f" Got the HighPowerFrequency  {obj_str}")
 
-    def start(self):
+    def start(self) -> None:
         # Turn on the worker thread
         Thread(target=self.worker, daemon=True).start()

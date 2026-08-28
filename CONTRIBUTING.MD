@@ -74,13 +74,13 @@ Here's how to set up `rf surveillance` for local development.
 git clone git@github.com:alan-techdev/rf-surveillance.git
 ```
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenv installed, this is how you set up your fork for local development:
+3. Install your local copy into a virtualenv. Assuming you have virtualenv installed, this is how you set up your fork for local development with test dependencies:
 
 ```bash
 cd rf-surveillance
 virtualenv env --python=python3
 source env/bin/activate
-pip install -e .
+pip install -e .[test]
 ```
 
 4. Create a branch for local development:
@@ -99,7 +99,7 @@ alias tox='PKG_VERSION=$(./scripts/parse_version.py) tox'
 tox
 ```
 
-Please note that tox runs test test suite against multiple python versions, if they are found available on the host machine.
+Please note that tox runs test suite against multiple python versions, if they are found available on the host machine.
 
 If you want to produce a built tar.gz and wheel distributions:
 
@@ -114,8 +114,8 @@ You report will be placed to `htmlcov` directory. Please do not include this dir
 7. Commit your changes and push your branch to GitHub:
 
 ```bash
-git add -p
-git commit -m "Your detailed description of your changes."
+git add .
+git commit . -m "Your detailed description of your changes."
 git push origin name-of-your-bugfix-or-feature
 ```
 
@@ -236,5 +236,21 @@ The roadmap(issues) located [here](https://github.com/alan-techdev/rf-surveillan
 Due dates are flexible.
 
 ### Process: Release:
-
+* bump the version in the toml file. Version number depends on weather major, minor or patch release
+* bump the same version in the __version__.py module
 * Follow semantic versioning. Look at: [http://semver.org](http://semver.org)
+* Commit and push all changes 
+```
+$ git add .
+$ git commit . -m " your comments here"
+$ git push HEAD
+```
+* Make sure  CI/CD is green from the github badge 
+* Release to pypi test server 
+```
+$ git tag --list # list the tag
+$ git tag test-1.0.0 # 1.0.0 is the new version as setup above
+$ git push origin test-1.0.0 # push to origin or remote repository 
+```
+
+

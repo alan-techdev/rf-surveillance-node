@@ -1,8 +1,8 @@
 import argparse
 import platform
 
-from rtlsdr import RtlSdr
-from serial import Serial
+from rtlsdr import RtlSdr # type:ignore
+from serial import Serial # type:ignore
 
 from rfnode.broker import DataBroker
 from rfnode.common.log_manager import LogManager
@@ -79,7 +79,7 @@ def main() -> None:
 
     serial_numbers = DeviceManager.get_device_serial_list()
     frequencies = Util.generate_array(
-        Setting.freq_start, Setting.freq_end, Setting.freq_step, len(serial_numbers)
+        Setting.freq_start, Setting.freq_end, Setting.freq_step, len(serial_numbers) # type:ignore
     )
     print(f"RTL SDR numbers {len(serial_numbers)}")
 
@@ -95,7 +95,7 @@ def main() -> None:
         )  # default sample_rate value used on initialization: 1.024e6 (1024 Msps)
         print(f"IQ sample size(ex: 0.7 -1.5j) {Setting.sample_size}\n\n")
         scanner = Scanner(
-            frequencies=frequencies[i],
+            frequencies=frequencies[i], # type:ignore
             sample_size=Setting.sample_size,
             power_threshold=Setting.power_threshold,
             sdr=sdr,

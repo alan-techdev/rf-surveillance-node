@@ -5,7 +5,7 @@ import numpy as np
 
 class Util:
 
-    def __init__(self):
+    def __init__(self) -> None:
         pass
 
     @classmethod
@@ -24,13 +24,13 @@ class Util:
             list[int]:Array of equal or near-equal size.
 .
         """
-        frequencies = np.arange(freq_start, freq_end, freq_step, np.int64)
+        frequencies = np.arange(freq_start, freq_end, freq_step, np.int64) # type: ignore
         return np.array_split(frequencies, device_amount)  # split of equal or near-equal size
 
 
 class NumpyComplexEncoder(json.JSONEncoder):
 
-    def default(self, obj) -> any:
+    def default(self, obj) -> tuple[float, float] | None: # type: ignore
 
         if isinstance(obj, complex):
             return (obj.real, obj.imag)
@@ -41,8 +41,8 @@ class NumpyComplexEncoder(json.JSONEncoder):
 if __name__ == "__main__":
     arrs = Util.generate_array(1, 500, 10, 2)
     print(len(arrs))
-    print(len(arrs[0]))
-    print(len(arrs[1]))
+    print(len(arrs[0])) # type: ignore
+    print(len(arrs[1])) # type: ignore
     for arr in arrs:
-        for i in arr:
+        for i in arr: # type: ignore
             print(i)

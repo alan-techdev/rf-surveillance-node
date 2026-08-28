@@ -20,13 +20,14 @@ class Setting:
     freq_end: float = 109.5
     freq_step: int = 100
     sample_size: int = 1024
+    sample_rate: int = 1024000
     power_threshold: float = 20.00
     rf_sender_port: str = "ttyACM0"
-    fr_sender_port_windows: str = "COM3"
+    rf_sender_port_windows: str = "COM3"
     rf_sleep_time: float = 0.1
 
     @staticmethod
-    def load_setting(file: str):
+    def load_setting(file: str)-> None:
         """
         Reads the JSON file and updates the class attributes with the values from the file.
 
