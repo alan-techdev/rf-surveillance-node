@@ -42,7 +42,7 @@ def get_templated_vars():
             author_name='Alan',
             year='2025',
             version='1.0.0',
-            github_username='alanmehio',
+            github_username='alan-techdev',
             repo_name='rf-surveillance-node',
         ),
     )

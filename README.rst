@@ -4,7 +4,7 @@ RF Surveillance Node
 .. start-badges see https://shields.io/badges and collection see https://github.com/inttter/md-badges
 
 | |build| |release_version| |wheel|
-| |docs| |pylint| |supported_versions|
+| |docs| |supported_versions| |contributors|
 | |ruff| |gh-lic| |commits_since_specific_tag_on_main|
 
 
@@ -29,11 +29,11 @@ The node works in a plug and play. High quality SDR devices (RTL-SDR, USRP, Blad
 
 Change Log
 ==========
- `Change Log <https://github.com/alanmehio/rf-surveillance-node/blob/main/CHANGELOG.rst>`_.
+ `Change Log <https://github.com/alan-techdev/rf-surveillance-node/blob/main/CHANGELOG.rst>`_.
 
 Quickstart
 ==========
-| `Usage <https://github.com/alanmehio/rf-surveillance-node/blob/main/docs/source/contents/usage.rst>`_.
+| `Usage <https://github.com/alan-techdev/rf-surveillance-node/blob/main/docs/source/contents/usage.rst>`_.
 
 
 License
@@ -52,7 +52,7 @@ License
 
 .. LINKS
 
-.. _GNU Affero General Public License v3.0: https://github.com/alanmehio/rf-surveillance-node/blob/main/LICENSE
+.. _GNU Affero General Public License v3.0: https://github.com/alan-techdev/rf-surveillance-node/blob/main/LICENSE
 
 
 
@@ -61,9 +61,9 @@ License
 .. Build Status
 .. Github Actions: Test Workflow Status for specific branch <branch>
 
-.. |build| image::  https://github.com/alanmehio/rf-surveillance-node/actions/workflows/ci_cd.yaml/badge.svg
+.. |build| image::  https://github.com/alan-techdev/rf-surveillance-node/actions/workflows/ci_cd.yaml/badge.svg
     :alt: GitHub Workflow Status (branch)
-    :target: https://github.com/alanmehio/rf-surveillance-node/actions
+    :target: https://github.com/alan-techdev/rf-surveillance-node/actions
 
 
 .. Documentation
@@ -71,11 +71,6 @@ License
 .. |docs| image::  https://img.shields.io/readthedocs/rf-surveillance-node/latest?logo=readthedocs&logoColor=lightblue
     :alt: Read the Docs (version)
     :target: https://rf-surveillance-node.readthedocs.io/en/latest/
-
-.. PyLint
-
-.. |pylint| image:: https://img.shields.io/badge/linting-pylint-yellowgreen
-    :target: https://github.com/pylint-dev/pylint
 
 .. PyPI
 
@@ -91,21 +86,22 @@ License
     :alt: Supported Python versions
     :target: https://pypi.org/project/rfnode
 
+.. |contributors| image:: https://img.shields.io/github/contributors/alan-techdev/rf-surveillance-node?color=blue&logo=github
+    :alt: GitHub contributors
+    :target: https://github.com/alan-techdev/rf-surveillance-node/graphs/contributors
+
 .. Github Releases & Tags
 
-.. |commits_since_specific_tag_on_main| image:: https://img.shields.io/github/commits-since/alanmehio/rf-surveillance-node/release-1.0.0/main?color=blue&logo=github
+.. |commits_since_specific_tag_on_main| image:: https://img.shields.io/github/commits-since/alan-techdev/rf-surveillance-node/release-1.0.0/main?color=blue&logo=github
     :alt: GitHub commits since tagged version (branch)
-    :target: https://github.com/alanmehio/rf-surveillance-node/compare/release-1.0.0..main
-
-.. |commits_since_latest_github_release| image:: https://img.shields.io/github/commits-since/alanmehio/rf-surveillance-node/latest?color=blue&logo=semver&sort=semver
-    :alt: GitHub commits since latest release (by SemVer)
+    :target: https://github.com/alan-techdev/rf-surveillance-node/compare/release-1.0.0..main
 
 .. LICENSE (eg AGPL, MIT)
 .. Github License
 
 .. |gh-lic| image:: https://img.shields.io/badge/license-GNU_Affero-orange
     :alt: GitHub
-    :target: https://github.com/alanmehio/rf-surveillance-node/blob/main/LICENSE
+    :target: https://github.com/alan-techdev/rf-surveillance-node/blob/main/LICENSE
 
 
 .. Ruff linter for Fast Python Linting
@@ -121,10 +117,10 @@ License
 .. Local Image as link
 
 
-.. |rf_node| image:: https://raw.githubusercontent.com/alanmehio/rf-surveillance-node/main/media/rf-node.png
+.. |rf_node| image:: https://raw.githubusercontent.com/alan-techdev/rf-surveillance-node/main/media/rf-node.png
     :alt: RF Surveillance Node
 
-.. |rf_node_console| image:: https://raw.githubusercontent.com/alanmehio/rf-surveillance-node/main/media/screen/rf-node-console.gif
+.. |rf_node_console| image:: https://raw.githubusercontent.com/alan-techdev/rf-surveillance-node/main/media/screen/rf-node-console.gif
     :alt: RF Surveillance Node Console Display for two RTL-SDR devices
 
 

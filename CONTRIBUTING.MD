@@ -17,9 +17,9 @@ You can contribute in many ways:
 
 ### Report Bugs
 
-Report bugs at [https://github.com/alanmehio/rf-surveillance/issues](https://github.com/alanmehio/rf-surveillance/issues).
+Report bugs at [https://github.com/alan-techdev/rf-surveillance/issues](https://github.com/alan-techdev/rf-surveillance/issues).
 
-Stambling upon a Bug means encountering different behaviour than the expected/advertised one. When you are reporting a bug, please include the following infromation by filling in [the template](https://github.com/alanmehio/rf-surveillance/blob/main/.github/ISSUE_TEMPLATE/bug_report.md).
+Stambling upon a Bug means encountering different behaviour than the expected/advertised one. When you are reporting a bug, please include the following infromation by filling in [the template](https://github.com/alan-techdev/rf-surveillance/blob/main/.github/ISSUE_TEMPLATE/bug_report.md).
 
 
 * Your operating system name and version.
@@ -55,7 +55,7 @@ You can open it in your browser at http://127.0.0.1:8000 !
 
 ### Submit Feedback
 
-The best way to send feedback is to file an issue at [https://github.com/alanmehio/rf-surveillance/issues](https://github.com/alanmehio/rf-surveillance/issues).
+The best way to send feedback is to file an issue at [https://github.com/alan-techdev/rf-surveillance/issues](https://github.com/alan-techdev/rf-surveillance/issues).
 
 If you are proposing a feature:
 
@@ -71,16 +71,16 @@ Here's how to set up `rf surveillance` for local development.
 2. Clone your fork locally:
 
 ```bash
-git clone git@github.com:alanmehio/rf-surveillance.git
+git clone git@github.com:alan-techdev/rf-surveillance.git
 ```
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenv installed, this is how you set up your fork for local development:
+3. Install your local copy into a virtualenv. Assuming you have virtualenv installed, this is how you set up your fork for local development with test dependencies:
 
 ```bash
 cd rf-surveillance
 virtualenv env --python=python3
 source env/bin/activate
-pip install -e .
+pip install -e .[test]
 ```
 
 4. Create a branch for local development:
@@ -99,7 +99,7 @@ alias tox='PKG_VERSION=$(./scripts/parse_version.py) tox'
 tox
 ```
 
-Please note that tox runs test test suite against multiple python versions, if they are found available on the host machine.
+Please note that tox runs test suite against multiple python versions, if they are found available on the host machine.
 
 If you want to produce a built tar.gz and wheel distributions:
 
@@ -114,8 +114,8 @@ You report will be placed to `htmlcov` directory. Please do not include this dir
 7. Commit your changes and push your branch to GitHub:
 
 ```bash
-git add -p
-git commit -m "Your detailed description of your changes."
+git add .
+git commit . -m "Your detailed description of your changes."
 git push origin name-of-your-bugfix-or-feature
 ```
 
@@ -153,10 +153,10 @@ To run all tests using various versions of python in virtualenvs defined in tox.
 tox
 ```
 
-To run all tests using python 3.8:
+To run all tests using python 3.13.5(it needs to be installed):
 
 ```bash
-tox -e py38
+tox -e py313
 ```
 
 To only run test cases matching the string 'smoke_test', using python 3.8:
@@ -231,10 +231,26 @@ For other issues: encourage friendly discussion, moderate debate, offer your tho
 
 ### Process: Roadmap
 
-The roadmap(issues) located [here](https://github.com/alanmehio/rf-surveillance/issues)
+The roadmap(issues) located [here](https://github.com/alan-techdev/rf-surveillance/issues)
 
 Due dates are flexible.
 
 ### Process: Release:
-
+* bump the version in the toml file. Version number depends on weather major, minor or patch release
+* bump the same version in the __version__.py module
 * Follow semantic versioning. Look at: [http://semver.org](http://semver.org)
+* Commit and push all changes 
+```
+$ git add .
+$ git commit . -m " your comments here"
+$ git push HEAD
+```
+* Make sure  CI/CD is green from the github badge 
+* Release to pypi test server 
+```
+$ git tag --list # list the tag
+$ git tag test-1.0.0 # 1.0.0 is the new version as setup above
+$ git push origin test-1.0.0 # push to origin or remote repository 
+```
+
+

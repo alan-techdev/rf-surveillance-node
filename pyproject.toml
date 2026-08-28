@@ -16,8 +16,8 @@ maintainers = [{name="Iso"}, {name="Alan"}] # must be an object
 license = "AGPL-3.0-only"
 readme = {file = "README.rst", content-type = "text/x-rst"}
 
-homepage = "https://github.com/alanmehio/rf-surveillance-node"
-repository = "https://github.com/alanmehio/rf-surveillance-node"
+homepage = "https://github.com/alan-techdev/rf-surveillance-node"
+repository = "https://github.com/alan-techdev/rf-surveillance-node"
 documentation = "https://rf-surveillance-node.readthedocs.io/"
 
 keywords = [
@@ -48,11 +48,11 @@ classifiers = [
 
 
 # PyPi url links, that appear in 'Project Links' section
-urls."Bug Tracker" = "https://github.com/alanmehio/rf-surveillance-node/issues"
-urls."CI: Github Actions" = "https://github.com/alanmehio/rf-surveillance-node/actions"
+urls."Bug Tracker" = "https://github.com/alan-techdev/rf-surveillance-node/issues"
+urls."CI: Github Actions" = "https://github.com/alan-techdev/rf-surveillance-node/actions"
 urls.Documentation = "https://rf-surveillance-node.readthedocs.io/"
-urls."Source Code" = "https://github.com/alanmehio/rf-surveillance-node"
-urls.Changelog = "https://github.com/alanmehio/rf-surveillance-node/blob/master/CHANGELOG.rst"
+urls."Source Code" = "https://github.com/alan-techdev/rf-surveillance-node"
+urls.Changelog = "https://github.com/alan-techdev/rf-surveillance-node/blob/master/CHANGELOG.rst"
 
 
 
@@ -66,7 +66,7 @@ dependencies = [
 
 ## optional dependency for test or other purpose 
 ## Install in edit mode with the test dependencies 
-## $ pip install -e . rfnode[test]
+## $ pip install -e .[test]
 [project.optional-dependencies]
 test = [
   "pytest (>=8.4.0); python_version >='3.9' and python_version <='3.14'",
@@ -132,32 +132,15 @@ rfnode = 'rfnode.main:main'
 # CONFIG PLACE
 ##############
 
-# see https://black.readthedocs.io/en/stable/  code format with max line 95
-[tool.black]
-line-length = 95
-include = '\.pyi?$'
-extend-exclude = '''
-'''
-
-# see https://pycqa.github.io/isort/index.html arrange the import in right order 
-[tool.isort]
-profile = 'black'
-
-# see https://bandit.readthedocs.io/en/latest/  check for security volubility
-#  Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
-#  Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
-[tool.bandit]
-tests = []
-skips = [
-    "B101", # This plugin test checks for the use of the Python assert keyword. https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
-    "B311"  # https://bandit.readthedocs.io/en/latest/blacklists/blacklist_calls.html
-]
-
-# RUFF covers the above so repeat is done again in one place
-# Linting and formatting with Ruff
-# see https://docs.astral.sh/ruff/configuration/
+# RUFF is a fast Python linter, written in Rust. 
+#It can be used as a replacement for Flake8, Pyflakes, pycodestyle, and other linters. 
+#It also includes some additional checks and features that are not available in those tools.
+# https://docs.astral.sh/ruff/configuration/
+# $ ruff check
 [tool.ruff]
-#target-version = "py312"
+target-version = "py310" 
+src = ["src/rfnode", "tests"]
+exclude = ["docs/", "scripts"]
 
 [tool.ruff.lint]
 select = [
@@ -175,8 +158,81 @@ ignore = [
     "B008",  # do not perform function calls in argument defaults
     "W191",  # indentation contains tabs
     "B904",  # Allow raising exceptions without from e, for HTTPException
-    "W291",  # Trailing whitespace 
 ]
+
+
+[tool.ruff.lint.isort]
+known-first-party = ["rfnode"]
+
+[tool.ruff.format]
+# Use black-compatible formatting
+quote-style = "double"
+indent-style = "space"
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+
+#*********************************************************************
+# mypy configuration moved from mypy.ini to pyproject.toml
+# config file doc:https://mypy.readthedocs.io/en/stable/config_file.html
+# $ mypy ./src/rfnode
+#**********************************************************************
+[tool.mypy]
+# Global options:
+warn_return_any = true
+warn_unused_configs = true
+
+# mypy per-module options:
+[[tool.mypy.overrides]]
+module = "rfnode.*"
+disallow_untyped_defs = true
+
+
+#*********************************************************************
+# Pytest configuration moved from pytest.ini to pyproject.toml
+# config file doc:https://docs.pytest.org/en/stable/reference/customize.html
+# $ pytest 
+#**********************************************************************
+[tool.pytest]
+minversion = "9.0"
+addopts = ["--strict-markers"]
+pythonpath=["src"]
+testpaths = ["tests"]
+
+
+#*********************************************************************
+# Test Coverage configuration moved from .coveragerc to pyproject.toml
+# config file doc:https://coverage.readthedocs.io/en/7.15.4/config.html
+#**********************************************************************
+# $ coverage run -m pytest
+[tool.coverage.run]
+source = ["src/rfnode"]
+parallel = true
+# branch is the if else statement 
+branch = true
+
+[tool.coverage.report]
+fail_under=30 # threshold for test coverage, if below this number the test will fail
+skip_covered = false
+show_missing = true
+precision = 2
+omit = [    
+    "tests/*",
+    "*/__init__.py"
+]
+
+exclude_lines = [
+    "raise NotImplementedError",
+    "raise NotImplemented"
+]
+ignore_errors = false
+
+
+[tool.coverage.html]
+directory = "coverage_html_report"
+
+
 
 
 # see scripts/parse_version.py 

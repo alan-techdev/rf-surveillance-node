@@ -1,9 +1,9 @@
-""" Device Manager works as a discovery for plug and play 
-to find the ports of the attached devices 
+""" Device Manager works as a discovery for plug and play
+to find the ports of the attached devices
 """
 import subprocess
 
-from rtlsdr import RtlSdr
+from rtlsdr import RtlSdr  # type: ignore
 
 
 class DeviceManager:
@@ -17,7 +17,7 @@ class DeviceManager:
     def get_device_serial_list() -> list[str]:
         # Get  a list of detected device serial numbers
         # Alan make some check and exception throwing later on
-        serial_numbers = RtlSdr.get_device_serial_addresses() 
+        serial_numbers = RtlSdr.get_device_serial_addresses()
         return list(map(str,serial_numbers)) # map() allows us to apply a specified function to each item in an iterable.
 
     @staticmethod
@@ -45,15 +45,15 @@ class DeviceManager:
         """
         Responsible for extracting the telemetry device path from a given list.
 
-        Return: 
+        Return:
             string: extracted device path. If the substring is not found, the method returns None.
         """
         i = lst2[1].find(DeviceManager.TTYUSB)
         if i != -1:
             ttyUSB = lst2[1]
-            return ttyUSB[i : len(ttyUSB)]
+            return ttyUSB[i : len(ttyUSB)] # type: ignore
         else:
-            return None
+            return None # type: ignore
 
 
 if __name__ == "__main__":

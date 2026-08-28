@@ -2,7 +2,7 @@ import struct
 import time
 import zlib
 
-from serial import Serial
+from serial import Serial  # type: ignore
 
 
 class Sender:
