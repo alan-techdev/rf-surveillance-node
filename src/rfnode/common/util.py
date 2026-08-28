@@ -13,7 +13,6 @@ class Util:
         cls, freq_start: int, freq_end: int, freq_step: int, device_amount: int
     ) -> list[np.int64]:
         """
-    
         Generates an array of frequencies based on the provided start, end, and step values.
         Args:
             freq_start (int): The starting frequencies in HZ.

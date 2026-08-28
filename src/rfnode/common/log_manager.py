@@ -13,7 +13,7 @@ class LogManager:
 
     def config_logger(self, verbose: int, dir: str)-> None:
         """
-        Responsible for configuring the logging settings in the LogManager class. 
+        Responsible for configuring the logging settings in the LogManager class.
         Args:
             verbose (int): Determines the login level.
             dir (string): Representing the directory where log files should be stored.
@@ -36,9 +36,6 @@ class LogManager:
 
 
 if __name__ == "__main__":
-    """
-    
-    """
     manager = LogManager()
     manager.config_logger(
         3,

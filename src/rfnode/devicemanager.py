@@ -1,5 +1,5 @@
-""" Device Manager works as a discovery for plug and play 
-to find the ports of the attached devices 
+""" Device Manager works as a discovery for plug and play
+to find the ports of the attached devices
 """
 import subprocess
 
@@ -45,7 +45,7 @@ class DeviceManager:
         """
         Responsible for extracting the telemetry device path from a given list.
 
-        Return: 
+        Return:
             string: extracted device path. If the substring is not found, the method returns None.
         """
         i = lst2[1].find(DeviceManager.TTYUSB)

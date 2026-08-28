@@ -1,6 +1,6 @@
-""" Broker  which works runs in a separate thread 
+""" Broker  which works runs in a separate thread
 It reads the queue which get blocked if there is no data
-class level attribute broker which get data from the SDR device reader 
+class level attribute broker which get data from the SDR device reader
 Once the data in queue, it is read and send to the Central machine
 """
 import logging
@@ -20,14 +20,14 @@ class DataBroker:
     def set_rf_sender(self, sender: Sender) -> None:
         """ set the sender class which sends the RF data to the Central machine
         Args:
-            sender (Sender): The RF sender 
+            sender (Sender): The RF sender
         Returns:
             None: does not return any value
         """
         self.sender = sender
 
     def worker(self)-> None:
-        """ loop once the queue is empty this loop block 
+        """ loop once the queue is empty this loop block
              or the thread get blocked await for incoming data to read again.
         """
         while True:
