@@ -111,6 +111,13 @@ tox -e check && tox -e build
 
 You report will be placed to `htmlcov` directory. Please do not include this directory to your commits, accidentally.
 
+7. CI/CD check 
+below are the command to use to make sure your CI/CD is green
+```bash
+
+
+```
+
 7. Commit your changes and push your branch to GitHub:
 
 ```bash
