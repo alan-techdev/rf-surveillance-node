@@ -1,8 +1,8 @@
 import platform
 from argparse import ArgumentParser, Namespace
 
-from rtlsdr import RtlSdr
-from serial import Serial
+from rtlsdr import RtlSdr # type:ignore
+from serial import Serial # type:ignore
 
 from rfnode import (
     __author__,  # type:ignore
