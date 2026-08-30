@@ -25,9 +25,9 @@ Simple Use Case
 
 .. code-block:: shell
 
-  rfnode  setting.json -vvv -ld /home/alan/tmp
+  rfnode  -s setting.json -v 40 -ld /home/alan/tmp
   **setting.json**  the setting file for frequency range and power threshold 
-| **vvv**: extra verbose 
+| **v**: extra verbose  to debug; if not supplied, it will default to error
 | **ld**: log file directory location
 |
 

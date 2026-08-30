@@ -111,7 +111,30 @@ tox -e check && tox -e build
 
 You report will be placed to `htmlcov` directory. Please do not include this directory to your commits, accidentally.
 
-7. Commit your changes and push your branch to GitHub:
+7. CI/CD check 
+below are the command to use to make sure your CI/CD is green
+```bash
+#Do Type Checking
+tox -e type -v -s false
+
+# Test Suite Against Wheel
+tox -e wheel-test -s false
+
+# Combine Coverage (dev, sdist, wheel) & make Reports
+tox -e coverage --sitepackages -v -s false
+
+# Ruff check 
+tox -e check -v -s false
+
+# Static type Checking Dependencies
+tox -s false -e pin-deps 
+
+# Test suite 
+ tox -v -s false | tee test_output.log
+
+```
+
+8. Commit your changes and push your branch to GitHub:
 
 ```bash
 git add .
@@ -119,7 +142,7 @@ git commit . -m "Your detailed description of your changes."
 git push origin name-of-your-bugfix-or-feature
 ```
 
-8. Submit a pull request through the GitHub website.
+9. Submit a pull request through the GitHub website.
 
 ## Contributor Guidelines
 
@@ -237,7 +260,7 @@ Due dates are flexible.
 
 ### Process: Release:
 * bump the version in the toml file. Version number depends on weather major, minor or patch release
-* bump the same version in the __version__.py module
+* bump the same version in the src/rfnode/__version__.py module
 * Follow semantic versioning. Look at: [http://semver.org](http://semver.org)
 * Commit and push all changes 
 ```

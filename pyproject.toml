@@ -6,7 +6,7 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "rfnode" # package name same as project name 
-version = "1.0.1"
+version = "1.0.2"
 description = "Radio Frequency Surveillance Node"
 authors = [
    {name="Iso"}, 
@@ -24,7 +24,7 @@ keywords = [
     "Radio Frequency", "RF", "Node"
 ]
 
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 
 # Troves classifer see https://pypi.org/classifiers/
 classifiers = [
@@ -59,7 +59,8 @@ urls.Changelog = "https://github.com/alan-techdev/rf-surveillance-node/blob/mast
 ### Dependency Constraints, aka Requirements ###
 # see https://python-poetry.org/docs/dependency-specification/#multiple-constraints-project
 dependencies = [
-  "pyrtlsdr>=0.3.0",
+  "pyrtlsdr>=0.5.0",
+  "pyrtlsdrlib>=0.0.5",
   "numpy (>=2.3.2); python_version >= '3.11' and python_version <= '3.14'", # see https://github.com/matplotlib/matplotlib/blob/v3.10.1/pyproject.toml
   "pyserial>=3.5" 
 ]
