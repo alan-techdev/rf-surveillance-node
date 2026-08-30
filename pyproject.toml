@@ -24,7 +24,7 @@ keywords = [
     "Radio Frequency", "RF", "Node"
 ]
 
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 
 # Troves classifer see https://pypi.org/classifiers/
 classifiers = [
