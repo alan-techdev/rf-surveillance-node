@@ -1,9 +1,18 @@
-import argparse
 import platform
+from argparse import ArgumentParser, Namespace
 
-from rtlsdr import RtlSdr  # type:ignore
-from serial import Serial  # type:ignore
+from rtlsdr import RtlSdr
+from serial import Serial
 
+from rfnode import (
+    __author__,  # type:ignore
+    __description__,  # type:ignore
+    __license__,  # type:ignore
+    __title__,  # type:ignore
+    __url__,  # type:ignore
+    __version__,  # type:ignore
+)
+from rfnode._help import bug_reporting
 from rfnode.broker import DataBroker
 from rfnode.common.log_manager import LogManager
 from rfnode.common.setting import Setting
@@ -47,8 +56,15 @@ def main() -> None:
 
 
     """
-    parser = argparse.ArgumentParser()
-    parser.add_argument("setting", help="path to setting file", type=str, metavar="file")
+    # https://docs.python.org/3/howto/argparse.html
+    parser = ArgumentParser(
+        prog = "rfnode",
+        usage="rfnode [-h] [-ld dir] [-v] [--version] [--author] [--report-bug] [--description] [--license] [--title] [--url]",
+        description=" Radio Frequency Scanner which capture given power threshold"
+    )
+    parser.add_argument("-s",
+                        "--setting",
+                        help="path to setting file", type=str, metavar="file")
     parser.add_argument(
         "-ld",
         "--log_directory",
@@ -56,11 +72,50 @@ def main() -> None:
         type=str,
         metavar="dir",
     )
-    parser.add_argument("-v", "--verbose", action="count", default=0)
-    args = parser.parse_args()
+    parser.add_argument("-v",
+                         "--verbose", help="increase output verbosity.Default to Error if not supplied, 40 is Debug", type=int, metavar="", default=0)
 
-    LogManager().config_logger(args.verbose, args.log_directory)
+    parser.add_argument("--version", action="store_true", help="Display current library version")
+    parser.add_argument("--author", action="store_true", help="Display author information")
+    parser.add_argument("--report-bug", action="store_true", help="Library detail information to report a bug")
+    parser.add_argument("--description", action="store_true", help="Display description of the package")
+    parser.add_argument("--license", action="store_true", help="Display license information")
+    parser.add_argument("--title", action="store_true", help="Display title of the package")
+    parser.add_argument("--url", action="store_true", help="Display read the docs url of the package")
+
+    args: Namespace = parser.parse_args()
+
+    if args.version:
+            print(f"Version: {__version__}")
+            return
+
+    if args.author:
+        print(f"Author: {__author__}")
+        return
+
+    if args.report_bug:
+        bug_reporting()
+        return
+
+    if args.description:
+        print(f"Description: {__description__}")
+        return
+
+    if args.license:
+        print(f"License: {__license__}")
+        return
+
+    if args.title:
+        print(f"Title: {__title__}")
+        return
+
+    if args.url:
+        print(f"URL: {__url__}")
+        return
+
     Setting.load_setting(args.setting)
+    LogManager().config_logger(args.verbose, args.log_directory)
+
 
     data_broker = DataBroker()
 

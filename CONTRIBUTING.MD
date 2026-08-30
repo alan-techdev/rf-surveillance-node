@@ -237,7 +237,7 @@ Due dates are flexible.
 
 ### Process: Release:
 * bump the version in the toml file. Version number depends on weather major, minor or patch release
-* bump the same version in the __version__.py module
+* bump the same version in the src/rfnode/__version__.py module
 * Follow semantic versioning. Look at: [http://semver.org](http://semver.org)
 * Commit and push all changes 
 ```
