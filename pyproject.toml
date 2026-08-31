@@ -6,7 +6,7 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "rfnode" # package name same as project name 
-version = "1.0.5"
+version = "1.0.6"
 description = "Radio Frequency Surveillance Node"
 authors = [
    {name="Iso"}, 
